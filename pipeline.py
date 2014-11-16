@@ -34,9 +34,7 @@ if StrictVersion(seesaw.__version__) < StrictVersion("0.1.5"):
 VERSION = "20141116.00"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'giferatordisco'
-#TRACKER_HOST = 'tracker.archiveteam.org'
-TRACKER_HOST = '127.0.0.1'
-
+TRACKER_HOST = 'tracker.archiveteam.org'
 
 
 ###########################################################################
