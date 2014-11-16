@@ -109,9 +109,6 @@ def fetch(url):
     elif response.status_code == 404:
         # Does not exist
         return
-    elif response.status_code == 400:
-        # Does not exist
-        return
     else:
         # Problem
         raise FetchError()
