@@ -2,7 +2,7 @@
 
 To use the script manually::
 
-    python discover.py 0 100000 myfile.txt.gz
+    python discover.py 0 100 myfile.txt.gz
 
 
 The file will contain things like:

@@ -114,7 +114,7 @@ class CustomProcessArgs(object):
         item_type, item_value = item['item_name'].split(':', 1)
 
         if item_type == 'page':
-            # Expect something like page:0-999 or page:1000-1999
+            # Expect something like page:0-199 or page:200-299
             start_num, end_num = item_value.split('-', 1)
             return ['python', 'discover.py', start_num, end_num,
                     "%(item_dir)s/%(warc_file_base)s.txt.gz" % item]
