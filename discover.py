@@ -7,10 +7,7 @@ To use the script manually::
 
 The file will contain things like:
 
-page:123456
-gif:user_chiefs_eberry29_hushfinger_1410003419.436270/400x286/chiefs_eberry29_hushfinger.gif
-jpg:user_chiefs_eberry29_hushfinger_1410003419.436270/400x286/chiefs_eberry29_hushfinger_share.jpg
-meta:123456
+gif:123456
 '''
 import gzip
 import re
@@ -72,16 +69,7 @@ def check_range(start_num, end_num):
                 time.sleep(10)
             else:
                 if text:
-                    yield 'page:{0}'.format(shortcode)
-                    yield 'meta:{0}'.format(shortcode)
-                    
-                    gif = extract_gif(text)
-                    jpg = extract_jpg(text)
-
-                    if gif:
-                        yield 'gif:{0}'.format(gif)
-                    if jpg:
-                        yield 'jpg:{0}'.format(jpg)
+                    yield 'gif:{0}'.format(shortcode)
 
                 break  # stop the while loop
 
@@ -112,24 +100,6 @@ def fetch(url):
     else:
         # Problem
         raise FetchError()
-        
-def extract_gif(text):
-    '''Return the GIF from the page.'''
-    # Search for something like
-    # <meta itemprop="image" content="http://prod-mr-user.storage.googleapis.com/assets/user_chiefs_eberry29_hushfinger_1410003419.436270/400x286/chiefs_eberry29_hushfinger.gif?v=5d058b0d67" />
-    match = re.search(r'<meta\s+itemprop="image"\s+content="http://prod-mr-user\.storage\.googleapis\.com/assets/([^"]+)\?v=.*" />', text)
-
-    if match:
-        return match.group(1)
-        
-def extract_jpg(text):
-    '''Return the preview JPG from the page.'''
-    # Search for something like
-    # <meta property="og:image" content="http://prod-mr-user.storage.googleapis.com/assets/user_chiefs_eberry29_hushfinger_1410003419.436270/400x286/chiefs_eberry29_hushfinger_share.jpg?v=5d058b0d67" />
-    match = re.search(r'<meta\s+property="og:image"\s+content="http://prod-mr-user\.storage\.googleapis\.com/assets/([^"]+)\?v=.*" />', text)
-
-    if match:
-        return match.group(1)
 
 if __name__ == '__main__':
     main()
